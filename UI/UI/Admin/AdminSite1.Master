@@ -1,0 +1,138 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminSite1.Master.cs" Inherits="UI.Admin.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+
+    #leftmenu, #centercontent {
+    float: left;
+
+}
+    #centercontent {
+      margin-left:20px;
+      
+    }
+    #header {
+        margin-bottom:12px;
+    }
+ #header {
+      width:1300px;
+      height:50px;
+      /*background-color:black;*/
+    }
+    #leftmenu {
+    margin-right:80px;
+    }
+ .leftMenu {
+     background-color:black;
+  
+     width:200px;
+     padding-left:20px;
+     padding-top:20px;
+     padding-bottom:20px;
+      }
+ 
+ 
+ #bottom {
+ height:100px;
+ width:1300px;
+
+    }
+    .myBread {
+        padding-bottom:5px;
+        margin-top:5px;
+    }
+    #header ul li {
+      float:left;
+      border-left:1px solid #DBDBDB;
+ 
+    }
+   
+</style>
+     <script src="../js/jquery2.1.1.min.js" ></script>
+    <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+    <link rel="stylesheet" type="text/css" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <link href="../css/zui.min.css" rel="stylesheet" type="text/css" />
+    <script src="../js/zui.min.js" ></script>
+
+ 
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style=" width:1300px;
+  
+  margin:0 auto;">
+     
+    <form id="form1" runat="server">
+        <div id="header">
+            <div style="font-size:20px;line-height:20px;padding-top:13px;padding-bottom:13px;padding-left:205px;float:left; width:1300px;" class="panel panel-default">
+               <label style=""> 一号原创管理系统</label>
+            </div>
+            <!--右侧-->
+            
+               
+            <div style="clear:both;">
+            </div>
+            <!--右侧结束-->
+        </div>
+        <div>
+   
+           <div  id="leftmenu" style="">
+              
+         <!--折叠-->
+                <nav class="menu" data-ride="menu" style="width: 200px">
+          <ul id="treeMenu" class="tree tree-menu" data-ride="tree">
+            <li class="active"><a href="Panel.aspx"><i class="icon icon-home" ></i>后台首页</a></li>
+            <li class="open"><a href="#"><i class="icon icon-user"></i>用户管理</a>
+                <ul>
+                    <li><a href="UserManager.aspx">用户管理</a></li>
+                <%--    <li><a href="#">权限管理</a></li>--%>
+                </ul>
+            </li>
+              <li><a href="GoodsTypeManager.aspx"><i class="icon  icon-window-alt"></i>商品分类</a></li>
+            <li class="open">
+              <a href="#"><i class="icon icon-shopping-cart"></i>商品管理</a>
+              <ul>
+                <li><a href="AddGoods.aspx">商品上架</a></li>
+                <li><a href="AllGoodsManager.aspx">所有商品</a></li>
+              
+              </ul>
+            </li>
+           
+            <li class="open">
+              <a href="#"><i class="icon icon-tasks"></i>订单管理</a>
+              <ul>
+                <li>
+                  <a href="OrderWaiting.aspx"><i class="icon icon-circle-blank"></i>待发货</a>
+                </li>
+                <li ><a href="OrderDoning.aspx"><i class="icon icon-play-sign"></i>进行中</a></li>
+                <li><a href="OrderFinished.aspx"><i class="icon icon-ok-sign"></i>已完成</a></li>
+              </ul>
+            </li>
+                <li><a href="siteInfoManager.aspx"><i class="icon icon-info"></i>网站信息</a></li>
+               <li><a href="logout.aspx"><i class="icon icon-filter"></i>注销登录</a></li>
+          </ul>
+        </nav>
+            <!---折叠-->
+           </div>
+            <div id="centercontent">
+                <!--这里给一个面包屑导航读取站点地图-->
+                <div ><label>当前位置：</label>
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server" CssClass="breadcrumb myBread">
+                    </asp:SiteMapPath>
+                    </div><br /><br />
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+           </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="bottom" style="width:1270px;text-align:center" class="panel panel-danger" >
+            <label style="margin-top:30px;">一号原创团队版权所有 Powered By原创团队</label><br />
+             <label style="margin-top:5px;">CopyRight&copy;1997-2017</label>
+        </div>
+    </form>
+</body>
+</html>

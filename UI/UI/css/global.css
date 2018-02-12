@@ -1,0 +1,135 @@
+a:link{
+	color:#DBDBDB;
+}
+#bottom-nav ul{
+			margin-top:20px ;
+			list-style: none;
+			color: #42424F;
+		}
+		#bottom-nav ul li{
+			font-size:12px;
+			margin-top:8px;
+		}
+		#bottom-nav .ul-title
+		{
+			font-size:12px;
+			font-weight:bold;
+			color:white;
+		}
+#divtop{
+	background-color:#808080;
+	border:1px solid  #808080;
+	opacity: 0.3;
+}
+#divtop:hover{
+	background-color: black;
+	border:0px ;
+	opacity: 1.0;
+}
+*:focus {outline: none;} /******控件获得焦点时的边框******/
+#RegisterModal #phoneInput
+{
+	width:180px;
+	height:40px;
+	
+	
+}
+#RegisterModal #phoneLabel{
+	text-align: center;
+	padding-top:10px;
+	height:41px;
+	width:50px;
+	border:1px solid #EEEEEE;
+	background:#EEEEEE;
+	
+	
+}
+
+#RegisterModal #regForm{
+	margin-top:20px;
+}
+
+#RegisterModal #verifyInput{
+	height:40px;
+}
+#RegisterModal a{
+	color:red;
+	text-decoration: underline;
+}
+#RegisterModal #MessageverifyInput{
+	height:40px;
+}
+#RegisterModal #btnGetMessage{
+	height:40px;
+	width:100px;
+	background-color: #555555;
+	color:white;
+	font-size:12px;
+	border:1px solid #555555;
+}
+#RegisterModal #btnPassword  {
+    height: 40px;
+    width: 285px;
+}
+#RegisterModal #RegSubmit{
+	height:48px;
+	width:276px;
+	margin-top:12px;
+	background-color: #555555;
+	border:1px solid #555555;
+	color:white;
+	font-size:20px;
+	letter-spacing: 8px;
+	
+}
+#RegisterModal input{
+	border:1px solid #DBDBDB;
+}
+#RegisterModal input:focus{
+	color:#DBDBDB;
+}
+#LoginModal input{
+	width:260px;
+	height:50px;
+}
+#LoginModal #unameDiv,#LoginModal #passworddiv,#LoginModal #submitDiv
+{
+	margin-bottom: 25px;
+}
+#LoginModal input{
+	border:1px solid #DBDBDB;
+	
+}
+#LoginModal input:focus{
+	color:#DBDBDB;
+}
+#logSubmit{
+	margin-top:12px;
+	background-color:#EA2000;
+	color:white;
+	border:solid 1px #EA2000;
+	font-size:20px;
+	letter-spacing: 8px;
+}
+#LoginModal #forgetPass{
+	color:#DBDBDB;
+}
+#LoginModal #fastReg{
+	color:red;
+}
+#LoginModal #regShareLink a{
+	margin-right:10px;
+}
+.inputLeftPadding{
+	padding-left:12px;
+}
+#bottom-nav a:link,#bottom-nav a:visited,#bottom-nav a:hover,#bottom-nav a:active,#bottombottom-notice a:link,#bottombottom-notice a:hover,#bottombottom-notice a:active,#bottombottom-notice a:visited{
+	color:#42424F;
+}
+#bottom-bottom{
+	font-size: 12px;
+	color:#42424F;
+}
+#bottom-bottom a:link,#bottom-bottom a:visited,#bottom-bottom a:active,#bottom-bottom a:hover{
+	color:#42424F;
+}

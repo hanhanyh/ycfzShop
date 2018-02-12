@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="index.aspx" title="首页"  description="">
+    <!--后台-->
+    <siteMapNode url="Admin/Panel.aspx" title="后台"  description="">
+      <siteMapNode url="Admin/siteInfoManager.aspx" title="网站信息管理"  description="" />
+      <siteMapNode url="Admin/UserManager.aspx" title="用户管理" />
+      <siteMapNode url="Admin/AddGoods.aspx" title="商品上架" />
+      <siteMapNode url="Admin/GoodsTypeManager.aspx" title="商品分类管理" />
+      <siteMapNode url="Admin/AllGoodsManager.aspx" title="商品管理" >
+          <siteMapNode url="Admin/GoodsEditor.aspx" title="商品编辑"/>
+      </siteMapNode>
+      <siteMapNode url="Admin/OrderWaiting.aspx" title="待发货订单" />
+      <siteMapNode url="Admin/OrderDoing.aspx" title="待收货订单" />
+      <siteMapNode url="Admin/OrderDoning.aspx" title="待收货订单" />
+      <siteMapNode url="Admin/OrderFinished.aspx" title="已完成订单" />
+      <siteMapNode url="Admin/SendingGoods.aspx" title="发货" />
+    </siteMapNode>
+    <!--前台-->
+    <siteMapNode url="" title=""  description="" />
+    <siteMapNode url="" title=""  description="" />
+  </siteMapNode>
+
+</siteMap>

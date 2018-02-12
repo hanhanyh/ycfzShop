@@ -1,0 +1,27 @@
+@charset "utf-8";
+body,div {
+	margin:auto;}
+#du1{
+	border: 1px solid #DEDEDE;
+	width: 1141px;
+	height:680px;;
+	color:#666;
+	padding-left: 20px;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	margin-top:20px;
+	margin-bottom:100px;
+	padding-right:20px;
+}
+.du1{
+	font-size:20px;
+	font-weight: bold;
+	color: #000;
+}
+.du{
+	font-size:16px;
+	float-weight: bold;
+	color:#000;}
+#du2 {
+	margin:auto;
+	width:1141px;}

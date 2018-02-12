@@ -1,0 +1,12 @@
+E:\实训项目\ycfz\Model\bin\Debug\Model.dll
+E:\实训项目\ycfz\Model\bin\Debug\Model.pdb
+E:\实训项目\ycfz\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\实训项目\ycfz\Model\obj\Debug\Model.dll
+E:\实训项目\ycfz\Model\obj\Debug\Model.pdb
+E:\实训项目\ycfz\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+E:\实训\ycfz\Model\bin\Debug\Model.dll
+E:\实训\ycfz\Model\bin\Debug\Model.pdb
+E:\实训\ycfz\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+E:\实训\ycfz\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\实训\ycfz\Model\obj\Debug\Model.dll
+E:\实训\ycfz\Model\obj\Debug\Model.pdb

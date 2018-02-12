@@ -1,0 +1,45 @@
+#tabs1{
+	border:1px solid white;
+	background:white;
+	padding-top:13px;
+	height:290px;
+	text-align: center;
+	
+}
+#tabs a{
+	font-weight: bold;
+}
+.centerbtn{
+	background-color: #000000;
+	border:1px solid #000000;
+	height:50px;
+	width:190px;
+	color:white;
+	
+}
+#centerbtnul{
+	list-style: none;
+}
+#centerbtnul{
+	margin-top:50px;
+	padding: 0;
+}
+#centerbtnul li{
+	margin-bottom: 20px;
+	
+}
+#TJTable{
+	width:570px;
+	height:270px;
+}
+#TJTable td{
+	border-top: 1px solid #DBDBDB;
+}
+#tjbtn{
+	height:50px;
+	width:180px;
+	background-color:black;
+	color:white;
+	border:0;
+	font-size: 20px;
+}

@@ -1,0 +1,439 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="UserCenter.master.cs" Inherits="UI.UserCenter1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+   <!-- <title>1号原创装</title>-->
+	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"  type="text/css" />
+	<link rel="stylesheet" href="css/ling.css" type="text/css"  /> 
+	<link rel="stylesheet" href="css/global.css" />
+	<link rel="stylesheet" href="css/index.css" />
+	<script src="js/jquery2.1.1.min.js" ></script>
+	<link rel="shortcut icon" href="favicon.ico"  /> 
+	<link rel="stylesheet" type="text/css" href="iCheck/skins/minimal/minimal.css" />
+	<script src="iCheck/icheck.min.js" ></script> 
+	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/global.js" ></script>
+      <link href="css/zui.min.css" rel="stylesheet" type="text/css" />
+     <script src="js/zui.min.js" ></script>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"  type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-color:#EEEEEE">
+     <a name="topname"> </a>
+	<div id="divtop"style="position: fixed;right:50px;top:80%;border:0;width:60px;height:60px;text-align: center;padding-top:20px;">
+		<a href="#top" id="topa">
+			<img src="img/index/chevron-up.png" style="color:white;width:20px;"/>	
+		</a>
+	</div>
+    <nav class="navbar navbar-inverse" role="navigation" style="border-radius: 0 0;">
+	<div class="container">
+    <div class="navbar-header">
+        	<img src="img/1hycz.png"  class="img-rounded "  style="position:relative;top:1px;"/>
+        	<button data-toggle="collapse" data-target="#collapse-nav" class="navbar-toggle ">
+             	<span class="glyphicon glyphicon-th-list" style="color:white;"></span>
+           </button>
+    </div>
+   	<!--
+       	作者：1031893464@qq.com
+       	时间：2016-12-13
+       	描述：折叠区域
+       -->
+    	<div class="collapse navbar-collapse" id="collapse-nav" style="float:left;">
+       	<!--右对齐-->
+		        <ul class="nav navbar-nav navbar-right"> 
+					<!--选项卡--->
+					<li class="active"><a href="index.aspx">首页</a></li>
+		            <li><a href="goodslistview.html">原创服装</a></li>
+		            <li><a href="tiaokuan/gsgl.html">公司概念</a></li>
+		            <!---导航栏内嵌表单-->
+		            <li>
+		            	<form class="navbar-form navbar-left" role="search">
+		            		<div class="form-group">
+		               		 <input type="text" class="form-control" placeholder="Search">
+		            		</div >
+		            	<button type="submit" class="btn btn-info">搜搜</button>
+		        		</form>
+		            </li>
+		            <!--下拉菜单-->
+					<li class="dropdown">
+		                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                    关于我们 <b class="caret"></b>
+		                </a>
+		                <ul class="dropdown-menu">
+		                    <li><a href="tiaokuan/tdxx.html">我们团队</a></li>
+		                    <li><a href="tiaokuan/lxwm.html">联系我们</a></li>
+		                    <li><a href="tiaokuan/jszc.html">技术支持</a></li>
+		                    <li class="divider"></li>
+		                    <li><a href="#">开发者</a></li>
+		                    <li class="divider"></li>
+		                    <li><a href="#">保留页面</a></li>
+		                </ul>
+		            </li>
+		            <!--
+                    	作者：1031893464@qq.com
+                    	时间：2016-12-13
+                    	描述：两个导航选项
+                    -->
+                    <%
+                        if (Session["UName"] == null)
+                        {
+                            Response.Write("<li><a href=\"#\" data-toggle=\"modal\" data-target=\"#RegisterModal\"><span class=\"glyphicon glyphicon-user\" ></span>注册</a></li> ");
+                            Response.Write(" <li><a href=\"#\" data-toggle=\"modal\" data-target=\"#LoginModal\"><span class=\"glyphicon glyphicon-log-in\"></span> 登录</a></li> ");
+                        }
+                        else {
+                            Response.Write("<li><a href=\"UserCenter.aspx\"  ><span class=\"glyphicon glyphicon-user\"></span> 用户中心</a></li> ");
+                               Response.Write("<li><a href=\"#\" id=\"btnlogout\" ><span class=\"glyphicon glyphicon-log-out\"></span> 注销</a></li> ");
+                        }
+                     %>
+		            
+		           
+		        </ul>
+      </div>
+	<!--div end container-->
+	</div>
+	
+</nav>
+    <script>
+        var obtnLogout = document.getElementById("btnlogout");
+        obtnLogout.onclick = function ()
+        {
+            //ajax异步注册用户
+            $.ajax({
+                type: 'get',
+                url: 'ajaxHandler.aspx?comm=Logout',
+                async: true,
+               // data: { Name: oNameText.value, Pwd: oPassText.value },
+                success: function (result) {
+                    if (result == "1") {
+                        //   alert("注销成功");
+                        location.reload();
+                   //     $("#RegisterModal").modal("hide");
+                    } else {
+                        alert("失败");
+                    }
+                },
+                error: function () {
+                    alert('ERROR!');
+                }
+            });
+            return false;//禁止asp.net回传
+        }
+    </script>
+    <!--
+	正文部分是container
+	描述：
+-->
+<div class="container">
+	
+    <!---------一系列的模态对话框---------->
+    <!--
+    	注册对话框开始
+    -->
+    <div class="modal fade" id="RegisterModal" role="dialog" aria-hidden="true" >
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button class="close" data-dismiss="modal" aria-hidden="true" type="button">
+    					&times;
+    				</button>
+    				<h4 class="modal-title">
+    					<img src="img/1hycz.png" /> &nbsp;&nbsp;用户注册
+    				</h4>
+    			</div>
+    			<!------>
+    			<div class="modal-body" >
+    				<div class="row">
+    				<div class="col-md-5">
+    					<img src="img/index/modal-ad0.jpg"  width="200" style="margin-top:20px;margin-left:12px;"/>
+    				</div>
+    					<div class="col-md-7" style="border-left:1px solid #DBDBDB;">
+    						<!--form begin
+                    -->
+                    <form   id="regForm">
+                		<table id="regTable" cellspacing="12" >
+                			<tr >
+                				<td colspan="2">
+                					<label style="height:40px;width:46px;border:1px solid #DBDBDB;text-align: center;padding-top:9px;color:#DBDBDB;">+86</label><input id="phoneInput" style="margin-bottom: 12px;;" class="inputLeftPadding" placeholder="请输入用户名"/>
+                				</td>
+                				
+                			</tr>
+                			<tr>
+                				<td>
+                					<input type="text"  id="verifyInput"  placeholder="图形验证码" class="inputLeftPadding"/>
+                				</td>
+                				<td>
+                					<table>
+                						<tr>
+                							<td id="changeVerify" ><a href="#"  style="margin-left:12px;">换一张</a></td>
+                							<td><img src="img/index/verify.png" width="60" /></td>
+                						</tr>
+                						
+                					</table>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td >
+                					<input type="text"  id="MessageverifyInput"  placeholder="短信验证码" class="inputLeftPadding" style="margin-top:12px;"/>
+                				</td>
+                				<td>
+                					<button id="btnGetMessage" style="margin-top:12px;margin-left:12px;">获取短信验证码</button>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td colspan="2">
+                					<input type="text"  id="btnPassword" style="margin-top:12px;" type="password"  class="inputLeftPadding" placeholder="设置密码"/>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td></td>
+                				<td align="right">
+                					<img src="img/index/passwordJudge.png"  />
+                				</td>
+                			</tr>
+                			<tr>
+                				<td colspan="2">
+                					<input type="checkbox" style="position:relative;top:3px;" /><span style="color:#B9B9B9;font-size:12px;">我已阅读并同意遵守</span>&nbsp;<a href="#">1号原创装服务条款</a>
+                				</td>
+                			</tr>
+                			<tr>
+                				<td colspan="2">
+                					<input type="button"  id="RegSubmit" style="color:white;" value="立即注册"/>
+                				</td>
+                			</tr>
+                		</table>
+                    </form>
+                    <!---form end--->
+    					</div>
+    				</div>
+    			</div>
+    			<!-------->
+    			<div class="modal-footer">
+    				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+    			</div>
+    			<!----->
+    		</div>
+    	</div>
+    </div>
+    <script>
+        //注册操作
+        var oRegBtn = document.getElementById("RegSubmit");
+        var oNameText = document.getElementById("phoneInput");
+        var oPassText = document.getElementById("btnPassword");
+        oRegBtn.onclick = function ()
+        {
+            if (oNameText.value == "" || oPassText.value == "") {
+                alert("用户名或密码没有输入！");
+            } else {
+                //ajax异步注册用户
+                $.ajax({
+                    type: 'post',
+                    url: 'ajaxHandler.aspx?comm=Reg',
+                    async: true,
+                    data: { Name: oNameText.value, Pwd: oPassText.value },
+                    success: function (result) {
+                        if (result == "1") {
+                            alert("注册成功");
+                            $("#RegisterModal").modal("hide");
+                        } else {
+                            alert("失败");
+                        }
+                    },
+                    error: function () {
+                        alert('ERROR!');
+                    }
+                });
+                return false;//禁止asp.net回传
+            }
+        }
+    </script>
+    <!--
+    	注册对话框结束
+    -->
+    <!---登录对话框开始--->
+    <div class="modal fade" id="LoginModal" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button class="close" data-dismiss="modal" aria-hidden="true" type="button">
+    					&times;
+    				</button>
+    				<h4 class="modal-title">
+    					<img src="img/1hycz.png" /> &nbsp;&nbsp;会员登录
+    				</h4>
+    			</div>
+    			<div class="modal-body">
+    				<div class="row" style="margin-top:20px;">
+    					<div class="col-md-6">
+    						<img src="img/index/modal-ad.jpg"  width="200" style="margin-top:5px;margin-left:36px;"/>
+    					</div>
+    					<div class="col-md-6" style="border-left:1px solid #DBDBDB;">
+    						<div id="unameDiv">
+    							<input type="text" id="loginName"  class="inputLeftPadding" placeholder="邮箱手/机号码" />
+    						</div>
+    						<div id="passworddiv">
+    								<input type="password" id="loginpwd" class="inputLeftPadding" placeholder="密码"/>
+    						</div>
+    						
+    						<div>
+    							<table>
+    								<tr>
+    									<td style="width:150px;"></td>
+    									<td style="font-size:12px;">
+    										<a href="#" id="forgetPass">忘记密码？</a>|<a href="#" id="fastReg">快速注册</a>
+    									</td>
+    								</tr>
+    								
+    							</table>
+    						</div>
+    						<div id="submitDiv">
+    							<input type="submit" value="登录"  id="logSubmit" />
+    						</div><!---->
+    						<div id="regShareLink">
+    							<a href="#"><img src="img/index/qqlogo.png"  /></a>
+    							<a href="#"><img src="img/index/wechat.png"  /></a>
+    							<a href="#"><img src="img/index/sina.png"  /></a>
+    							<a href="#"><img src="img/index/renren.png"  /></a>
+    							<a href="#"><img src="img/index/tenweibo.png"  /></a>
+    						</div><!----->
+    					</div>
+    				</div>
+    			</div>
+    			<div class="modal-footer">
+    				<button class="btn btn-default" data-dismiss="modal">关闭</button>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!---登录对话框结束--->
+     <script>
+         //登录操作
+         var oLoginBtn = document.getElementById("logSubmit");
+         var oNameText = document.getElementById("loginName");
+         var oPassText = document.getElementById("loginpwd");
+         oLoginBtn.onclick = function () {
+             //alert(oNameText);
+             //alert(oPassText);
+             if (oNameText.value == "" || oPassText.value == "") {
+                 alert("用户名或密码没有输入！");
+             } else {
+                 //ajax异步注册用户
+                 $.ajax({
+                     type: 'post',
+                     url: 'ajaxHandler.aspx?comm=Login',
+                     async: true,
+                     data: { Name: oNameText.value, Pwd: oPassText.value },
+                     success: function (result) {
+                         if (result == "1") {
+                            // alert("登录成功");
+                             location.reload();
+                             $("#LoginModal").modal("hide");
+                         } else {
+                             alert("登录失败！账号或密码错误！");
+                         }
+                     },
+                     error: function () {
+                         alert('ERROR!');
+                     }
+                 });
+                 return false;//禁止asp.net回传
+             }
+         }
+    </script>
+      <!--左侧导航开始-->
+       <nav class="menu" data-ride="menu" style="width: 200px;float:left;margin-right:100px;margin-bottom:50px;">
+          <ul id="treeMenu" class="tree tree-menu" data-ride="tree">
+            <li ><a href="UserCenter.aspx"><i class="icon icon-home" ></i>用户中心</a></li>
+            <li class="open"><a href="EditInfo.aspx"><i class="icon icon-user"></i>我的资料</a> </li>
+            
+            <li class="open">
+              <a href="#"><i class="icon icon-shopping-cart"></i>我的订单</a>
+              <ul>
+                <li><a href="MyOrders.aspx">所有订单</a></li>
+               
+            
+              </ul>
+            </li>
+           <li class="open">
+               <a href="MyAddress.aspx"><i class="icon icon-book"></i>收货地址</a>
+           </li>
+            <li class="open">
+              <a href="#"><i class="icon icon-tasks"></i>账户设置</a>
+              <ul>
+                <li>
+                  <a href="EditPassword.aspx"><i class="icon icon-circle-blank"></i>修改密码</a>
+                </li>
+              </ul>
+            </li>
+                <li><a href="Logout.aspx"><i class="icon icon-info"></i>退出账号</a></li>
+          </ul>
+        </nav>
+    <!--左侧导航结束-->
+    <form id="form1" runat="server"  >
+        <div style="float:left;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <div style="clear:both;">
+
+    </div>
+    <!--底部导航--->
+<div class="container-fluid" style="color:white;background-color: black;">
+    <div class="row  visible-lg" style="margin-top:12px;" id="bottom-nav">
+    	<div class="col-md-2">
+    		
+    	</div>
+    	<div class="col-md-2">
+    	
+    		<ul>
+    			<li class="ul-title">用户指南</li>
+    			<li><a href="#" onclick="$('#RegisterModal').modal('show');">免费注册</a></li>
+    			<li><a href="goodslistview.html">选购商品</a></li>
+    			<li><a href="tiaokuan/thhlc.html">收货退款</a></li>
+    		</ul>
+    	</div>
+    	<div class="col-md-2">
+    	
+    		<ul>
+    			<li class="ul-title">售后服务</li>
+    			<li><a href="tiaokuan/thhzc.html">退换货政策</a></li>
+    			<li><a href="tiaokuan/thhlc.html">退换货流程</a></li>
+    			<li><a href="tiaokuan/tsjy.html">投诉与建议</a></li>
+    		</ul>
+    	</div>
+    	<div class="col-md-2">
+    
+    		<ul >
+    			<li class="ul-title">加入我们</li>
+    			<li><a href="#">合作联盟</a></li>
+    			<li><a href="#">品牌入驻</a></li>
+    			<li><a href="tiaokuan/tdxx.html">团队信息</a></li>
+    		</ul>
+    	</div>
+    	<div class="col-md-2" style="margin-top:20px;width:224px;height:93px;">
+    		<img src="img/gg2.jpg" style="border:1px solid #272822;position: relative;top:5px;left:-9px;"  />
+    	</div>
+    		<div class="col-md-2"></div>
+    </div>
+    <!---最底部--->
+    <div class="row " style="margin-top:12px;color: #42424F;font-size: 10px;">
+    	<div class="col-md-2"></div>
+    	<div class="col-md-2">
+    		<img src="img/credit-flag3.png"  />
+    		
+    	</div>
+    	<div class="col-md-7" id="bottom-bottom">
+    		<div id="bottombottom-notice">
+    			<a href="index.html">返回首页</a> | <a href="goodslistview.html">原创服装</a>  | <a href="tiaokuan/lxwm.html">联系我们</a> |  <a href="tiaokuan/fwtk.html">服务条款</a> | <a href="#">友情链接</a>
+    		</div>
+    		<div style="margin-top:2px;">CopyRight&copy; 2016&nbsp;&nbsp;四川一号原创装有限公司&nbsp;&nbsp;&nbsp;<a href="">蜀ICP16036203号</a></div>
+    	</div>
+    </div>
+</body>
+</html>
